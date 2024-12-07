@@ -9,9 +9,21 @@ with open("input1.txt", "r") as file:
 list_1.sort()
 list_2.sort()
 
-res = 0
+list2_dict = {}
+for i in list_2:
+    if i in list2_dict:
+        list2_dict[i] += 1
+    else:
+        list2_dict[i] = 1
+
+res_1 = 0
+res_2 = 0
 for i in range(len(list_1)):
     diff = abs(list_1[i]-list_2[i])
-    res += diff
+    res_1 += diff
 
-print(f"Result: {res}")
+    if list_1[i] in list2_dict:
+        res_2 += list_1[i]*list2_dict[list_1[i]]
+
+print(f"Result 1: {res_1}")
+print(f"Result 2: {res_2}")
