@@ -1,6 +1,25 @@
-data = "xmul(2,4)%&mul[3,7]!@^do_not_mul(5,5)+mul(32,64]then(mul(11,8)mul(8,5))"
+data_list = []
+with open("inputs/input3.txt", "r") as file:
+    for line in file:
+        data_list.append(line)
+data = ""    
+for x in data_list:
+    data += x
 
-data = data.split("mul(")
+print(data)
 
+data = [x.split(")")[0] for x in data.split("mul(") if len(x.split(")")) > 1]
+result = 0
 for x in data:
-    print(x)
+    x = x.split(",")
+    if len(x) != 2:
+        continue
+    if len(x[0]) > 3 or len(x[1]) > 3:
+        continue
+    if not (x[0].isdigit() and x[1].isdigit()):
+        continue
+    num1 = int(x[0])
+    num2 = int(x[1])
+    result += num1*num2
+print(result)
+

@@ -1,7 +1,7 @@
 
 list_1, list_2 = [], []
 
-with open("input1.txt", "r") as file:
+with open("inputs/input1.txt", "r") as file:
     for line in file:
         values = [int(i) for i in line.strip().split()]
         list_1.append(values[0])
